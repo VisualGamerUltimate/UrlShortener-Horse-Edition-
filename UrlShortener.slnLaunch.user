@@ -1,0 +1,19 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "UrlShortener.UrlService\\UrlShortener.UrlService.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "UrlShortener.UserService\\UrlShortener.UserService.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "UrlShortener.ApiGateway\\UrlShortener.ApiGateway.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

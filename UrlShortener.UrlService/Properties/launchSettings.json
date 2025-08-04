@@ -1,0 +1,14 @@
+﻿{
+    "profiles": {
+        "UrlService": {
+            "commandName": "Project",
+            "dotnetRunMessages": true,
+            "launchBrowser": true,
+            "applicationUrl": "http://localhost:5003;https://localhost:5004",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        }
+    }
+}
+}

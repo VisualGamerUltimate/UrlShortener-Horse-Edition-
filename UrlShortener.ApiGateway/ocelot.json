@@ -1,0 +1,55 @@
+{
+    "Routes": [
+        {
+            "DownstreamPathTemplate": "/api/urls",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "urlservice",
+                    "Port": 80
+                }
+            ],
+            "UpstreamPathTemplate": "/urls",
+            "UpstreamHttpMethod": [ "POST" ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/auth/login",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "userservice",
+                    "Port": 80
+                }
+            ],
+            "UpstreamPathTemplate": "/auth/login",
+            "UpstreamHttpMethod": [ "POST" ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/auth/register",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "userservice",
+                    "Port": 80
+                }
+            ],
+            "UpstreamPathTemplate": "/auth/register",
+            "UpstreamHttpMethod": [ "POST" ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/urls/{shortCode}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "urlservice",
+                    "Port": 80
+                }
+            ],
+            "UpstreamPathTemplate": "/{shortCode}",
+            "UpstreamHttpMethod": [ "GET" ]
+        }
+    ],
+    "GlobalConfiguration": {
+        "BaseUrl": "http://apigateway"
+    }
+}

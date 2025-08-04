@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "UrlShortener.IntegrationTests": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Testing"
+      }
+    }
+  }
+}

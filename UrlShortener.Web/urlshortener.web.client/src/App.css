@@ -1,0 +1,93 @@
+﻿/* src/App.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: url('https://pbs.twimg.com/media/GRXQFaFaUAA8OWo.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.app-wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 450px;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    text-align: center;
+}
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+    .nav-buttons .nav-button {
+        flex: 1;
+        margin: 0 5px;
+        text-align: center;
+    }
+
+        /* Button styling */
+        .nav-buttons .nav-button button {
+            width: 100%;
+            padding: 10px;
+            font-weight: 500;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Active tab styling using NavLink's .active class */
+        .nav-buttons .nav-button.active button {
+            background-color: #357ABD;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hover effect */
+        .nav-buttons .nav-button button:hover {
+            background-color: #2f65a0;
+        }
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+    button:hover {
+        background-color: #357ABD;
+    }
+
+h2 {
+    margin-bottom: 1rem;
+    color: #333;
+}
