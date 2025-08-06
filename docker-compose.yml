@@ -28,6 +28,7 @@ services:
       - app-network
 
   userservice:
+    image: visualgamer/userservice:latest
     build:
       context: .
       dockerfile: UrlShortener.UserService/Dockerfile
@@ -40,6 +41,7 @@ services:
       - app-network
 
   urlservice:
+    image: visualgamer/urlservice:latest
     build:
       context: .
       dockerfile: UrlShortener.UrlService/Dockerfile
@@ -49,10 +51,13 @@ services:
       - sqlserver
       - rabbitmq
       - redis
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
     networks:
       - app-network
 
   apigateway:
+    image: visualgamer/apigateway:latest
     build:
       context: .
       dockerfile: UrlShortener.ApiGateway/Dockerfile
@@ -61,8 +66,11 @@ services:
     depends_on:
       - userservice
       - urlservice
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
     networks:
       - app-network
+
 
 networks:
   app-network:

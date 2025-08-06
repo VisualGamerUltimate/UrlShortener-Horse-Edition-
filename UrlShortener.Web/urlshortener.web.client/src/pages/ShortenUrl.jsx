@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import api from '../api';
+import { useAuth } from '../AuthContext';
 
 export default function ShortenUrl() {
+    const { token, isLoggedIn } = useAuth();
+
     const [originalUrl, setOriginalUrl] = useState('');
     const [shortUrl, setShortUrl] = useState('');
     const [copied, setCopied] = useState(false);
@@ -9,7 +12,15 @@ export default function ShortenUrl() {
 
     const shorten = async () => {
         try {
-            const res = await api.post('/urls', { originalUrl });
+            const res = await api.post(
+                '/urls',
+                { originalUrl },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            );
             const generatedUrl = `http://localhost:5000/${res.data.shortCode}`;
             setShortUrl(generatedUrl);
             setError('');
@@ -29,10 +40,19 @@ export default function ShortenUrl() {
         }
     };
 
+    if (!isLoggedIn()) {
+        return (
+            <div className="app-wrapper">
+                <div className="container">
+                    <h3>Please log in to shorten URLs.</h3>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className="app-wrapper">
             <div className="container">
-                
                 <h2>Shorten URL</h2>
                 <input
                     placeholder="Paste long URL"

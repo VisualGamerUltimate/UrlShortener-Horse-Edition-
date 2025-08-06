@@ -7,11 +7,14 @@ using UrlShortener.Shared.EventBus.Events;
 using UrlShortener.Shared.Models.DTOs;
 using UrlShortener.UrlService.Commands;
 using UrlShortener.UrlService.Queries;
+using Microsoft.AspNetCore.Authorization;
 
 namespace UrlShortener.UrlService.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
+    
     public class UrlsController : ControllerBase
     {
         private readonly IMediator _mediator;

@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using UrlShortener.UserService.Data;
-using UrlShortener.Shared.Models.Entities;
 using UrlShortener.Shared.Models.DTOs;
+using UrlShortener.Shared.Models.Entities;
+using UrlShortener.UserService.Data;
 using UrlShortener.UserService.Services;
 
 namespace UrlShortener.UserService.Controllers
@@ -31,6 +32,7 @@ namespace UrlShortener.UserService.Controllers
                 Id = Guid.NewGuid().ToString(),
                 Username = request.Username,
                 Email = request.Email,
+                PasswordHash = PasswordHasher.Hash(request.Password),
                 CreatedAt = DateTime.UtcNow,
                 IsActive = true
             };
@@ -51,8 +53,8 @@ namespace UrlShortener.UserService.Controllers
             var user = await _db.Users.FirstOrDefaultAsync(u =>
                 u.Username == request.Username && u.IsActive);
 
-            if (user == null)
-                return Unauthorized("Invalid username");
+            if (user == null || !PasswordHasher.Verify(request.Password, user.PasswordHash))
+                return Unauthorized("Invalid credentials");
 
             var token = _jwt.GenerateToken(user);
 
@@ -65,5 +67,3 @@ namespace UrlShortener.UserService.Controllers
         }
     }
 }
-
-// This code defines an AuthController for user registration and login in a URL shortener service.
